@@ -40,6 +40,7 @@
     <!--    </bean>-->
 
     <!-- Dependency injection using setters and taking information from properties file    -->
+    <!-- !!!! By default we have scope - 'singleton' ( it means that all the variables in main class which were created from the same bean will reference on the same object(bean)    -->
     <bean id="musicPlayer"
           class="dlivitin.springapp1.MusicPlayer">
         <property name="musicList">
@@ -51,5 +52,20 @@
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
+
+
+    <!-- We can set scope = prototype (in that case for all variables created using this bean new object will be created). Each variable will reference to its own object.    -->
+
+    <!--    <bean id="musicPlayer"-->
+    <!--          class="dlivitin.springapp1.MusicPlayer" scope="prototype">-->
+    <!--        <property name="musicList">-->
+    <!--            <list>-->
+    <!--                <ref bean="classicalMusicBean"/>-->
+    <!--                <ref bean="rockMusicBean"/>-->
+    <!--            </list>-->
+    <!--        </property>-->
+    <!--        <property name="name" value="${musicPlayer.name}"/>-->
+    <!--        <property name="volume" value="${musicPlayer.volume}"/>-->
+    <!--    </bean>-->
 
 </beans>
