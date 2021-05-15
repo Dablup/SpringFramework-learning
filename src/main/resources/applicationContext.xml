@@ -7,8 +7,15 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="MusicBean"
+    <!-- Creating music bean(specifying the class of needed music) and then we are creating a music player bean and inject musicBean via constructor-arg     -->
+    <!-- Dependency Injection(DI) via constructor in the XML file   -->
+    <bean id="musicBean"
           class="dlivitin.springapp1.RockMusic">
+    </bean>
+
+    <bean id="musicPlayer"
+          class="dlivitin.springapp1.MusicPlayer">
+        <constructor-arg ref="musicBean"/>
     </bean>
 
 </beans>

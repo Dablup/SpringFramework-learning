@@ -10,11 +10,15 @@ public class TestSpring {
         );
 
         // Creating bean using context
-        Music music = context.getBean("MusicBean", Music.class);
+        // Music music = context.getBean("musicBean", Music.class);
 
         // Dependency injection via constructor ( it is needed because we do not want to create objects(ClassicalMusic or RockMusic)
         // explicitly in MusicPlayer class). That is why we inject needed object via constructor.
-        MusicPlayer musicPlayer = new MusicPlayer(music);
+        // MusicPlayer musicPlayer = new MusicPlayer(music);
+
+
+        // Now we have dependency injection via constructor in XML configuration file.
+        MusicPlayer musicPlayer = context.getBean("musicPlayer",MusicPlayer.class);
         musicPlayer.playMusic();
 
         // When we end work with context we need to close it
