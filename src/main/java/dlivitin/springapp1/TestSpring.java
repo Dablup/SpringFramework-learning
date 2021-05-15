@@ -22,6 +22,8 @@ public class TestSpring {
         musicPlayer.playMusic();
         System.out.println(musicPlayer.getVolume());
 
+//        ClassicalMusic classicalMusic = context.getBean("classicalMusicBean",ClassicalMusic.class);
+
         // When we end work with context we need to close it
         context.close();
     }

@@ -13,9 +13,14 @@
 
 
     <!-- Creating music bean(specifying the class of needed music) and then we are creating a music player bean and inject musicBean   -->
-
+    <!-- Specifying the init-method(method that will be called during creating bean) and destroy-method( during termination)        -->
+    <!-- For the beans with scope = prototype the destroy method is not invoked   -->
+    <!-- Factory-method is method with the help of which we can create a new object   -->
     <bean id="classicalMusicBean"
-          class="dlivitin.springapp1.ClassicalMusic">
+          class="dlivitin.springapp1.ClassicalMusic"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy"
+          factory-method="getClassicalMusic">
     </bean>
 
     <bean id="rockMusicBean"
