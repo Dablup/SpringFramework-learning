@@ -38,7 +38,7 @@ public class MusicPlayer {
     }
 
     // Setter for field music
-    public void setMusic(List<Music> music) {
+    public void setMusicList(List<Music> music) {
         this.musicList = music;
     }
 }

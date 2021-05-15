@@ -42,7 +42,7 @@
     <!-- Dependency injection using setters and taking information from properties file    -->
     <bean id="musicPlayer"
           class="dlivitin.springapp1.MusicPlayer">
-        <property name="music">
+        <property name="musicList">
             <list>
                 <ref bean="classicalMusicBean"/>
                 <ref bean="rockMusicBean"/>
