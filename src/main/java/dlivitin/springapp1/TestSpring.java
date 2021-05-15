@@ -20,6 +20,7 @@ public class TestSpring {
         // Now we have dependency injection via constructor in XML configuration file.
         MusicPlayer musicPlayer = context.getBean("musicPlayer",MusicPlayer.class);
         musicPlayer.playMusic();
+        System.out.println(musicPlayer.getVolume());
 
         // When we end work with context we need to close it
         context.close();

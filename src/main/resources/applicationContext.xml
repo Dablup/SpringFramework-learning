@@ -7,15 +7,49 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- Creating music bean(specifying the class of needed music) and then we are creating a music player bean and inject musicBean via constructor-arg     -->
-    <!-- Dependency Injection(DI) via constructor in the XML file   -->
-    <bean id="musicBean"
+    <!-- Connecting properties file to the applicationContext xml file   -->
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
+
+
+    <!-- Creating music bean(specifying the class of needed music) and then we are creating a music player bean and inject musicBean   -->
+
+    <bean id="classicalMusicBean"
+          class="dlivitin.springapp1.ClassicalMusic">
+    </bean>
+
+    <bean id="rockMusicBean"
           class="dlivitin.springapp1.RockMusic">
     </bean>
 
+    <!-- Dependency Injection(DI) via constructor in the XML file   -->
+
+    <!--    <bean id="musicPlayer"-->
+    <!--          class="dlivitin.springapp1.MusicPlayer">-->
+    <!--        <constructor-arg ref="musicBean"/>-->
+    <!--    </bean>-->
+
+
+    <!-- Dependency injection via setters in class MusicPlayer   -->
+
+    <!--    <bean id="musicPlayer"-->
+    <!--          class="dlivitin.springapp1.MusicPlayer">-->
+    <!--        <property name="music" ref="musicBean"/>-->
+    <!--        <property name="name" value="SomeName"/>-->
+    <!--        <property name="volume" value="50"/>-->
+    <!--    </bean>-->
+
+    <!-- Dependency injection using setters and taking information from properties file    -->
     <bean id="musicPlayer"
           class="dlivitin.springapp1.MusicPlayer">
-        <constructor-arg ref="musicBean"/>
+        <property name="music">
+            <list>
+                <ref bean="classicalMusicBean"/>
+                <ref bean="rockMusicBean"/>
+            </list>
+        </property>
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
 
 </beans>
