@@ -1,8 +1,13 @@
 package dlivitin.springapp1;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Component
+@Scope("singleton")
 public class ClassicalMusic implements Music{
 
 
@@ -15,11 +20,13 @@ public class ClassicalMusic implements Music{
     }
 
     // for the init method
+    @PostConstruct
     public void doMyInit(){
         System.out.println("Doing my initialization");
     }
 
     // for the destroy-method
+    @PreDestroy
     public void doMyDestroy(){
         System.out.println("Doing my destruction");
     }
