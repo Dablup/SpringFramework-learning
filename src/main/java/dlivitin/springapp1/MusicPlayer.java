@@ -5,12 +5,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
 
-@Component
+import java.util.List;
+import java.util.Random;
+
+
 public class MusicPlayer {
-    private Music music;
+
+    private List<Music> music;
 
     @Value("${musicPlayer.name}")
     private String name;
@@ -24,13 +26,15 @@ public class MusicPlayer {
     // Inversion of control( dependency injection via constructor)
     // We are using @Autowired annotation to perform an injection of needed beans
     // We can use @Qualifier to specify which bean exactly we want to inject
-    @Autowired
-    public MusicPlayer(@Qualifier("rockMusic") Music music){
+
+    public MusicPlayer(List<Music> music){
         this.music = music;
     }
 
     public void playMusic(){
-        System.out.println("Playing: " + music.getSong());
+        Random random = new Random();
+        int someNumber = random.nextInt(music.size());
+        System.out.println("Playing: " + music.get(someNumber).getSong());
     }
 
     public String getName() {

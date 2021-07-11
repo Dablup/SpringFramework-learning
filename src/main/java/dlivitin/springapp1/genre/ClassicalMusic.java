@@ -1,23 +1,25 @@
-package dlivitin.springapp1;
+package dlivitin.springapp1.genre;
 
+import dlivitin.springapp1.Music;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component
-@Scope("singleton")
-public class ClassicalMusic implements Music{
+//@Component
+//@Scope("singleton")
+
+public class ClassicalMusic implements Music {
 
 
     // private constructor -> we can not create object using keyword 'new'
-    private ClassicalMusic(){}
-
-    // factory method  (method to create a new object)
-    public static ClassicalMusic getClassicalMusic(){
-        return new ClassicalMusic();
-    }
+//    private ClassicalMusic(){}
+//
+//    // factory method  (method to create a new object)
+//    public static ClassicalMusic getClassicalMusic(){
+//        return new ClassicalMusic();
+//    }
 
     // for the init method
     @PostConstruct

@@ -1,82 +1,87 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans  xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:context="http://www.springframework.org/schema/context"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
-
-
-    <!-- Using this line we turn on availability to use scanning of the classes to find a @Component annotation    -->
-    <!-- Classes with @Component annotation will be our beans    -->
-    <context:component-scan base-package="dlivitin.springapp1"/>
-
-    <!-- Connecting properties file -->
-    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+<!--Everything is commented here because I use SpringConfig (configuration via Java class) -->
 
 
 
 
-    <!-- Creating music bean(specifying the class of needed music) and then we are creating a music player bean and inject musicBean   -->
-    <!-- Specifying the init-method(method that will be called during creating bean) and destroy-method( during termination)        -->
-    <!-- For the beans with scope = prototype the destroy method is not invoked   -->
-    <!-- Factory-method is method with the help of which we can create a new object   -->
-    <!--    <bean id="classicalMusicBean"-->
-    <!--          class="dlivitin.springapp1.ClassicalMusic"-->
-    <!--          init-method="doMyInit"-->
-    <!--          destroy-method="doMyDestroy"-->
-    <!--          factory-method="getClassicalMusic">-->
-    <!--    </bean>-->
-
-    <!--    <bean id="rockMusicBean"-->
-    <!--          class="dlivitin.springapp1.RockMusic">-->
-    <!--    </bean>-->
-
-    <!-- Dependency Injection(DI) via constructor in the XML file   -->
-
-    <!--    <bean id="musicPlayer"-->
-    <!--          class="dlivitin.springapp1.MusicPlayer">-->
-    <!--        <constructor-arg ref="musicBean"/>-->
-    <!--    </bean>-->
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans  xmlns="http://www.springframework.org/schema/beans"-->
+<!--        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--        xmlns:context="http://www.springframework.org/schema/context"-->
+<!--        xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+<!--        http://www.springframework.org/schema/beans/spring-beans.xsd-->
+<!--        http://www.springframework.org/schema/context-->
+<!--        http://www.springframework.org/schema/context/spring-context.xsd">-->
 
 
-    <!-- Dependency injection via setters in class MusicPlayer   -->
+<!--    &lt;!&ndash; Using this line we turn on availability to use scanning of the classes to find a @Component annotation    &ndash;&gt;-->
+<!--    &lt;!&ndash; Classes with @Component annotation will be our beans    &ndash;&gt;-->
+<!--    <context:component-scan base-package="dlivitin.springapp1"/>-->
 
-    <!--    <bean id="musicPlayer"-->
-    <!--          class="dlivitin.springapp1.MusicPlayer">-->
-    <!--        <property name="music" ref="musicBean"/>-->
-    <!--        <property name="name" value="SomeName"/>-->
-    <!--        <property name="volume" value="50"/>-->
-    <!--    </bean>-->
-
-    <!-- Dependency injection using setters and taking information from properties file    -->
-    <!-- !!!! By default we have scope - 'singleton' ( it means that all the variables in main class which were created from the same bean will reference on the same object(bean)    -->
-    <!--    <bean id="musicPlayer"-->
-    <!--          class="dlivitin.springapp1.MusicPlayer">-->
-    <!--        <property name="musicList">-->
-    <!--            <list>-->
-    <!--                <ref bean="classicalMusicBean"/>-->
-    <!--                <ref bean="rockMusicBean"/>-->
-    <!--            </list>-->
-    <!--        </property>-->
-    <!--        <property name="name" value="${musicPlayer.name}"/>-->
-    <!--        <property name="volume" value="${musicPlayer.volume}"/>-->
-    <!--    </bean>-->
+<!--    &lt;!&ndash; Connecting properties file &ndash;&gt;-->
+<!--    <context:property-placeholder location="classpath:musicPlayer.properties"/>-->
 
 
-    <!-- We can set scope = prototype (in that case for all variables created using this bean new object will be created). Each variable will reference to its own object.    -->
 
-    <!--    <bean id="musicPlayer"-->
-    <!--          class="dlivitin.springapp1.MusicPlayer" scope="prototype">-->
-    <!--        <property name="musicList">-->
-    <!--            <list>-->
-    <!--                <ref bean="classicalMusicBean"/>-->
-    <!--                <ref bean="rockMusicBean"/>-->
-    <!--            </list>-->
-    <!--        </property>-->
-    <!--        <property name="name" value="${musicPlayer.name}"/>-->
-    <!--        <property name="volume" value="${musicPlayer.volume}"/>-->
-    <!--    </bean>-->
 
-</beans>
+<!--    &lt;!&ndash; Creating music bean(specifying the class of needed music) and then we are creating a music player bean and inject musicBean   &ndash;&gt;-->
+<!--    &lt;!&ndash; Specifying the init-method(method that will be called during creating bean) and destroy-method( during termination)        &ndash;&gt;-->
+<!--    &lt;!&ndash; For the beans with scope = prototype the destroy method is not invoked   &ndash;&gt;-->
+<!--    &lt;!&ndash; Factory-method is method with the help of which we can create a new object   &ndash;&gt;-->
+<!--    &lt;!&ndash;    <bean id="classicalMusicBean"&ndash;&gt;-->
+<!--    &lt;!&ndash;          class="dlivitin.springapp1.genre.ClassicalMusic"&ndash;&gt;-->
+<!--    &lt;!&ndash;          init-method="doMyInit"&ndash;&gt;-->
+<!--    &lt;!&ndash;          destroy-method="doMyDestroy"&ndash;&gt;-->
+<!--    &lt;!&ndash;          factory-method="getClassicalMusic">&ndash;&gt;-->
+<!--    &lt;!&ndash;    </bean>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;    <bean id="rockMusicBean"&ndash;&gt;-->
+<!--    &lt;!&ndash;          class="dlivitin.springapp1.genre.RockMusic">&ndash;&gt;-->
+<!--    &lt;!&ndash;    </bean>&ndash;&gt;-->
+
+<!--    &lt;!&ndash; Dependency Injection(DI) via constructor in the XML file   &ndash;&gt;-->
+
+<!--    &lt;!&ndash;    <bean id="musicPlayer"&ndash;&gt;-->
+<!--    &lt;!&ndash;          class="dlivitin.springapp1.MusicPlayer">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <constructor-arg ref="musicBean"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </bean>&ndash;&gt;-->
+
+
+<!--    &lt;!&ndash; Dependency injection via setters in class MusicPlayer   &ndash;&gt;-->
+
+<!--    &lt;!&ndash;    <bean id="musicPlayer"&ndash;&gt;-->
+<!--    &lt;!&ndash;          class="dlivitin.springapp1.MusicPlayer">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="music" ref="musicBean"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="name" value="SomeName"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="volume" value="50"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </bean>&ndash;&gt;-->
+
+<!--    &lt;!&ndash; Dependency injection using setters and taking information from properties file    &ndash;&gt;-->
+<!--    &lt;!&ndash; !!!! By default we have scope - 'singleton' ( it means that all the variables in main class which were created from the same bean will reference on the same object(bean)    &ndash;&gt;-->
+<!--    &lt;!&ndash;    <bean id="musicPlayer"&ndash;&gt;-->
+<!--    &lt;!&ndash;          class="dlivitin.springapp1.MusicPlayer">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="musicList">&ndash;&gt;-->
+<!--    &lt;!&ndash;            <list>&ndash;&gt;-->
+<!--    &lt;!&ndash;                <ref bean="classicalMusicBean"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;                <ref bean="rockMusicBean"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;            </list>&ndash;&gt;-->
+<!--    &lt;!&ndash;        </property>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="name" value="${musicPlayer.name}"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="volume" value="${musicPlayer.volume}"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </bean>&ndash;&gt;-->
+
+
+<!--    &lt;!&ndash; We can set scope = prototype (in that case for all variables created using this bean new object will be created). Each variable will reference to its own object.    &ndash;&gt;-->
+
+<!--    &lt;!&ndash;    <bean id="musicPlayer"&ndash;&gt;-->
+<!--    &lt;!&ndash;          class="dlivitin.springapp1.MusicPlayer" scope="prototype">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="musicList">&ndash;&gt;-->
+<!--    &lt;!&ndash;            <list>&ndash;&gt;-->
+<!--    &lt;!&ndash;                <ref bean="classicalMusicBean"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;                <ref bean="rockMusicBean"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;            </list>&ndash;&gt;-->
+<!--    &lt;!&ndash;        </property>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="name" value="${musicPlayer.name}"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="volume" value="${musicPlayer.volume}"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </bean>&ndash;&gt;-->
+
+<!--</beans>-->
